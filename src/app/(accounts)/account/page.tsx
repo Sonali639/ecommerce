@@ -1,42 +1,66 @@
 "use client";
 
-
+import React, { useEffect, useState } from "react";
 import Label from "@/components/Label/Label";
-import React, { FC, useEffect } from "react";
 import ButtonPrimary from "@/shared/Button/ButtonPrimary";
 import Input from "@/shared/Input/Input";
-import Select from "@/shared/Select/Select";
-import Textarea from "@/shared/Textarea/Textarea";
 import { avatarImgs } from "@/contains/fakeData";
 import Image from "next/image";
 import { httpRequest } from "@/api/hello/httpRequest";
 import { API } from "@/constants/common";
 
 const AccountPage = () => {
- const fetchUserDetail = async () => {
-    try {
+  const [info, setInfo] = useState({});
+  const [name, setName] = useState("");
+  const [email, setEmail] = useState("");
+  const [phone, setPhone] = useState("");
 
-const response = await httpRequest({
+  const fetchUserDetail = async () => {
+    try {
+      const response = await httpRequest({
         url: API.INFO,
         method: "GET",
       });
-   console.log(response,"responseinfo")
+      const user = response.user;
+      console.log(user, "responseinfo");
+      setInfo(user);
+      setName(user.name || "");
+      setEmail(user.email || "");
+      setPhone(user.phone || "");
     } catch (error) {
-      console.error("Error fetching product section data:", error);
+      console.error("Error fetching user detail:", error);
     }
   };
 
-  useEffect(()=>{
-    fetchUserDetail();
-  },[])
+  const updateUser = async () => {
+    try {
+      const response = await httpRequest({
+        url: API.INFO_UPDATE,
+        method: "POST",
+        params: {
+          name,
+          email,
+          phone,
+        },
+      });
+      console.log("User updated successfully", response);
+      // optionally show a success message here
+    } catch (error) {
+      console.error("Error updating user:", error);
+      // optionally show an error message
+    }
+  };
 
+  useEffect(() => {
+    fetchUserDetail();
+  }, []);
 
   return (
-    <div className={`nc-AccountPage `}>
+    <div className={`nc-AccountPage`}>
       <div className="space-y-10 sm:space-y-12">
         {/* HEADING */}
         <h2 className="text-2xl sm:text-3xl font-semibold">
-          Account infomation
+          Account information
         </h2>
         <div className="flex flex-col md:flex-row">
           <div className="flex-shrink-0 flex items-start">
@@ -65,7 +89,6 @@ const response = await httpRequest({
                     strokeLinejoin="round"
                   />
                 </svg>
-
                 <span className="mt-1 text-xs">Change Image</span>
               </div>
               <input
@@ -74,15 +97,19 @@ const response = await httpRequest({
               />
             </div>
           </div>
+
           <div className="flex-grow mt-10 md:mt-0 md:pl-16 max-w-3xl space-y-6">
+            {/* Full Name */}
             <div>
               <Label>Full name</Label>
-              <Input className="mt-1.5" defaultValue="Enrico Cole" />
+              <Input
+                className="mt-1.5"
+                value={name}
+                onChange={(e) => setName(e.target.value)}
+              />
             </div>
 
-            {/* ---- */}
-
-            {/* ---- */}
+            {/* Email */}
             <div>
               <Label>Email</Label>
               <div className="mt-1.5 flex">
@@ -91,28 +118,15 @@ const response = await httpRequest({
                 </span>
                 <Input
                   className="!rounded-l-none"
-                  placeholder="example@email.com"
+                  value={email}
+                  onChange={(e) => setEmail(e.target.value)}
                 />
               </div>
             </div>
 
-            {/* ---- */}
-            <div className="max-w-lg">
-              <Label>Date of birth</Label>
-              <div className="mt-1.5 flex">
-                <span className="inline-flex items-center px-2.5 rounded-l-2xl border border-r-0 border-neutral-200 dark:border-neutral-700 bg-neutral-50 dark:bg-neutral-800 text-neutral-500 dark:text-neutral-400 text-sm">
-                  <i className="text-2xl las la-calendar"></i>
-                </span>
-                <Input
-                  className="!rounded-l-none"
-                  type="date"
-                  defaultValue="1990-07-22"
-                />
-              </div>
-            </div>
-            {/* ---- */}
+            {/* Address (optional - static) */}
             <div>
-              <Label>Addess</Label>
+              <Label>Address</Label>
               <div className="mt-1.5 flex">
                 <span className="inline-flex items-center px-2.5 rounded-l-2xl border border-r-0 border-neutral-200 dark:border-neutral-700 bg-neutral-50 dark:bg-neutral-800 text-neutral-500 dark:text-neutral-400 text-sm">
                   <i className="text-2xl las la-map-signs"></i>
@@ -124,33 +138,24 @@ const response = await httpRequest({
               </div>
             </div>
 
-            {/* ---- */}
-            <div>
-              <Label>Gender</Label>
-              <Select className="mt-1.5">
-                <option value="Male">Male</option>
-                <option value="Female">Female</option>
-                <option value="Other">Other</option>
-              </Select>
-            </div>
-
-            {/* ---- */}
+            {/* Phone Number */}
             <div>
               <Label>Phone number</Label>
               <div className="mt-1.5 flex">
                 <span className="inline-flex items-center px-2.5 rounded-l-2xl border border-r-0 border-neutral-200 dark:border-neutral-700 bg-neutral-50 dark:bg-neutral-800 text-neutral-500 dark:text-neutral-400 text-sm">
                   <i className="text-2xl las la-phone-volume"></i>
                 </span>
-                <Input className="!rounded-l-none" defaultValue="003 888 232" />
+                <Input
+                  className="!rounded-l-none"
+                  value={phone}
+                  onChange={(e) => setPhone(e.target.value)}
+                />
               </div>
             </div>
-            {/* ---- */}
-            <div>
-              <Label>About you</Label>
-              <Textarea className="mt-1.5" defaultValue="..." />
-            </div>
+
+            {/* Update Button */}
             <div className="pt-2">
-              <ButtonPrimary>Update account</ButtonPrimary>
+              <ButtonPrimary onClick={updateUser}>Update account</ButtonPrimary>
             </div>
           </div>
         </div>

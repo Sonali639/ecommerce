@@ -2316,10 +2316,6 @@ select {
   margin-top: 2rem;
   margin-bottom: 2rem;
 }
-.mx-24 {
-  margin-left: 6rem;
-  margin-right: 6rem;
-}
 .\!ml-auto {
   margin-left: auto !important;
 }
@@ -2689,14 +2685,14 @@ select {
 .max-h-60 {
   max-height: 15rem;
 }
+.max-h-80 {
+  max-height: 20rem;
+}
 .max-h-\[60vh\] {
   max-height: 60vh;
 }
 .max-h-full {
   max-height: 100%;
-}
-.max-h-80 {
-  max-height: 20rem;
 }
 .min-h-0 {
   min-height: 0px;
@@ -4260,23 +4256,11 @@ select {
 .leading-\[115\%\] {
   line-height: 115%;
 }
-.leading-none {
-  line-height: 1;
-}
-.leading-\[8px\] {
-  line-height: 8px;
-}
-.leading-\[0px\] {
-  line-height: 0px;
-}
-.leading-\[-px\] {
-  line-height: -px;
-}
-.leading-\[-5px\] {
-  line-height: -5px;
-}
 .leading-\[14px\] {
   line-height: 14px;
+}
+.leading-none {
+  line-height: 1;
 }
 .tracking-tight {
   letter-spacing: -0.025em;
@@ -6121,6 +6105,10 @@ select {
   --tw-text-opacity: 1;
   color: rgba(var(--c-primary-500), var(--tw-text-opacity, 1));
 }
+.dark\:text-red-500:is(.dark *) {
+  --tw-text-opacity: 1;
+  color: rgb(239 68 68 / var(--tw-text-opacity, 1));
+}
 .dark\:text-slate-100:is(.dark *) {
   --tw-text-opacity: 1;
   color: rgb(241 245 249 / var(--tw-text-opacity, 1));
@@ -6148,14 +6136,6 @@ select {
 .dark\:text-white:is(.dark *) {
   --tw-text-opacity: 1;
   color: rgb(255 255 255 / var(--tw-text-opacity, 1));
-}
-.dark\:text-red-500:is(.dark *) {
-  --tw-text-opacity: 1;
-  color: rgb(239 68 68 / var(--tw-text-opacity, 1));
-}
-.dark\:text-red-200:is(.dark *) {
-  --tw-text-opacity: 1;
-  color: rgb(254 202 202 / var(--tw-text-opacity, 1));
 }
 .dark\:text-opacity-20:is(.dark *) {
   --tw-text-opacity: 0.2;

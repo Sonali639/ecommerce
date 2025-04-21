@@ -48,7 +48,9 @@ export const API = Object.freeze({
 
     //user 
 
-    INFO: "user/info"
+    INFO: "user/info",
+
+    INFO_UPDATE:"user/info/update"
 
 });
 

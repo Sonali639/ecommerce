@@ -1,8 +1,7 @@
 {
-  "/product-details/[id]/page": "app/product-details/[id]/page.js",
-  "/page": "app/page.js",
-  "/category/[id]/page": "app/category/[id]/page.js",
-  "/[id]/page": "app/[id]/page.js",
-  "/cart/page": "app/cart/page.js",
-  "/(accounts)/account/page": "app/(accounts)/account/page.js"
+  "/(accounts)/account-password/page": "app/(accounts)/account-password/page.js",
+  "/(accounts)/account/page": "app/(accounts)/account/page.js",
+  "/(accounts)/account-billing/page": "app/(accounts)/account-billing/page.js",
+  "/(accounts)/account-savelists/page": "app/(accounts)/account-savelists/page.js",
+  "/(accounts)/account-order/page": "app/(accounts)/account-order/page.js"
 }
