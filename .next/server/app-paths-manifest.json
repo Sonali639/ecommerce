@@ -1,7 +1,10 @@
 {
-  "/(accounts)/account-password/page": "app/(accounts)/account-password/page.js",
+  "/page": "app/page.js",
+  "/product-details/[id]/page": "app/product-details/[id]/page.js",
+  "/checkout/page": "app/checkout/page.js",
+  "/favicon.ico/route": "app/favicon.ico/route.js",
   "/(accounts)/account/page": "app/(accounts)/account/page.js",
-  "/(accounts)/account-billing/page": "app/(accounts)/account-billing/page.js",
   "/(accounts)/account-savelists/page": "app/(accounts)/account-savelists/page.js",
-  "/(accounts)/account-order/page": "app/(accounts)/account-order/page.js"
+  "/(accounts)/account-order/page": "app/(accounts)/account-order/page.js",
+  "/(accounts)/account-password/page": "app/(accounts)/account-password/page.js"
 }

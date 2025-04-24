@@ -64,6 +64,25 @@ const [loaderHeader, setLoaderHeader] = useState<boolean>(true);
   const [sliderThree, setSliderThree] = useState<ProductSection | null>(null);
   const [header, setHeader] = useState<ProductSection | null>(null);
 
+
+
+    const fetchUserDetail = async () => {
+      try {
+        const response = await httpRequest({
+          url: API.INFO,
+          method: "GET",
+        });
+        const user = response.user;
+     
+  
+        //save to local storage use storeLocalStorage
+        storeLocalStorage("user", user);
+  
+  
+      } catch (error) {
+        console.error("Error fetching user detail:", error);
+      }
+    };
   const fetchProductSections = async () => {
     try {
 
@@ -154,6 +173,7 @@ const responseHeader = await httpRequest({
 
   console.log(header,'header---')
   useEffect(() => {
+    fetchUserDetail();
     fetchProductSections();
   }, []);
 

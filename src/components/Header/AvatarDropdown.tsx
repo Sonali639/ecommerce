@@ -8,12 +8,21 @@ import {
   Transition,
 } from "@/app/headlessui";
 import { avatarImgs } from "@/contains/fakeData";
-import { Fragment } from "react";
+import { Fragment, use, useEffect, useState } from "react";
 import Avatar from "@/shared/Avatar/Avatar";
 import SwitchDarkMode2 from "@/shared/SwitchDarkMode/SwitchDarkMode2";
 import Link from "next/link";
+import { getLocalStorage } from "@/common/common";
 
 export default function AvatarDropdown() {
+
+const [user, setUser] = useState({});
+
+useEffect(() => {
+  const user = getLocalStorage("user");
+  setUser(user);
+}, []);
+
   return (
     <div className="AvatarDropdown ">
       <Popover className="relative">
@@ -57,11 +66,12 @@ export default function AvatarDropdown() {
                 <div className="overflow-hidden rounded-3xl shadow-lg ring-1 ring-black ring-opacity-5">
                   <div className="relative grid grid-cols-1 gap-6 bg-white dark:bg-neutral-800 py-7 px-6">
                     <div className="flex items-center space-x-3">
-                      <Avatar imgUrl={avatarImgs[7]} sizeClass="w-12 h-12" />
+                      <Avatar imgUrl={user?.avatar} sizeClass="w-12 h-12" className="rounded-full" />
 
                       <div className="flex-grow">
-                        <h4 className="font-semibold">Eden Smith</h4>
-                        <p className="text-xs mt-0.5">Los Angeles, CA</p>
+                      <h4 className="font-semibold">{user?.name || user?.phone}</h4>
+
+                        <p className="text-xs mt-0.5">{user?.email}</p>
                       </div>
                     </div>
 
