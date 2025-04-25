@@ -55,7 +55,25 @@ const ProductCard: FC<ProductCardProps> = ({
   const [variantActive, setVariantActive] = useState(0);
   const [showModalQuickView, setShowModalQuickView] = useState(false);
   const router = useRouter();
+ 
 
+  const addWishlist = async () => {
+    try {
+const res = await httpRequest({
+  url: API.ADD_TO_WISHLIST,
+  method: "POST",
+  params: {
+    product_id: id,
+  },
+})
+console.log(res,"wishlist res")
+} catch (error) {
+  console.error("Error adding to wishlist:", error);
+}
+  };
+
+
+ 
   // const notifyAddTocart = ({ size }: { size?: string }) => {
   //   toast.custom(
   //     (t) => (
@@ -116,6 +134,8 @@ const ProductCard: FC<ProductCardProps> = ({
     .catch((error) => {
       console.error("Add to cart error:", error);
     });
+
+
 
   
     toast.custom(
@@ -345,7 +365,7 @@ const ProductCard: FC<ProductCardProps> = ({
             />
           </Link>
           <ProductStatus status={`${calculateDiscount(base_price, base_discounted_price )}`} />
-          <LikeButton liked={isLiked} className="absolute top-3 end-3 z-10" />
+          <LikeButton liked={isLiked} id={id} className="absolute top-3 end-3 z-10" />
           {/* {sizes ? renderSizeList() : renderGroupButtons()} */}
           {renderGroupButtons()}
         </div>

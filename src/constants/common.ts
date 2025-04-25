@@ -36,6 +36,8 @@ export const API = Object.freeze({
 
     ADD_TO_CART: "carts/add",
 
+ADD_TO_WISHLIST: "user/wishlists",
+
     CHANGE_QUANTITY: "carts/change-quantity",
 
     DESTORY_CART: "carts/destroy",
@@ -50,7 +52,11 @@ export const API = Object.freeze({
 
     INFO: "user/info",
 
-    INFO_UPDATE:"user/info/update"
+    INFO_UPDATE:"user/info/update",
+
+    CREATE_ADDRESS:"user/address/create",
+
+    USER_ADDRESSES:"user/addresses",
 
 });
 

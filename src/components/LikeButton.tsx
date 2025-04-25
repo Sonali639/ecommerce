@@ -1,27 +1,76 @@
 "use client";
 
+import { httpRequest } from "@/api/hello/httpRequest";
+import { API } from "@/constants/common";
 import React, { useEffect, useState } from "react";
 
 export interface LikeButtonProps {
   className?: string;
   liked?: boolean;
+  id?: string;
 }
 
 const LikeButton: React.FC<LikeButtonProps> = ({
   className = "",
   liked = false,
+  id,
 }) => {
   const [isLiked, setIsLiked] = useState(liked);
+  const [wishlistinfo, setWishlistinfo] = useState<any>(null);
 
-  // make random for demo
+  const handleLike = async () => {
+    const newLikedState = !isLiked;
+    setIsLiked(newLikedState);
+
+    if (newLikedState) {
+      // Only call API when liked is true (adding to wishlist)
+      try {
+        const res = await httpRequest({
+          url: API.ADD_TO_WISHLIST,
+          method: "POST",
+          params: {
+            product_id: id,
+          },
+        });
+        console.log("wishlist res", res);
+      } catch (error) {
+        console.error("Error adding to wishlist:", error);
+      }
+    } else {
+      // (Optional) You can also add remove-from-wishlist API here
+      console.log("Unliked - call remove from wishlist API here if needed");
+      try {
+        const res = await httpRequest({
+          url: `${API.ADD_TO_WISHLIST}/${id}`,
+          method: "DELETE",
+        });
+      } catch (error) {
+        console.error("Error adding to wishlist:", error);
+      }
+
+    }
+  };
+
+  const wishlist = async () => {
+    try {
+      const response = await httpRequest({
+        url: API.ADD_TO_WISHLIST,
+        method: "GET",
+      });
+      console.log("wishlist res", response);
+    } catch (error) {
+      console.error("Error adding to wishlist:", error);
+    }
+  };
   useEffect(() => {
-    setIsLiked(Math.random() > 0.5);
+  
+  wishlist();
   }, []);
 
   return (
     <button
       className={`w-9 h-9 flex items-center justify-center rounded-full bg-white dark:bg-slate-900 text-neutral-700 dark:text-slate-200 nc-shadow-lg ${className}`}
-      onClick={() => setIsLiked(!isLiked)}
+      onClick={handleLike}
     >
       <svg className="w-5 h-5" viewBox="0 0 24 24" fill="none">
         <path

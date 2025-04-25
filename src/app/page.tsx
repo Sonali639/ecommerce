@@ -73,8 +73,6 @@ const [loaderHeader, setLoaderHeader] = useState<boolean>(true);
           method: "GET",
         });
         const user = response.user;
-     
-  
         //save to local storage use storeLocalStorage
         storeLocalStorage("user", user);
   

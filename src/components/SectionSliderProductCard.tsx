@@ -59,6 +59,8 @@ const SectionSliderProductCard: FC<SectionSliderProductCardProps> = ({
   //   fetchProductSection();
   // }, []);
 
+  
+
   useEffect(() => {
    const OPTIONS: Partial<Glide.Options> = {
       perView: 4,
