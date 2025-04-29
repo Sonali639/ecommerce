@@ -17,50 +17,25 @@
       "static/chunks/main-app.js",
       "static/chunks/app/not-found.js"
     ],
-    "/category/[id]/page": [
+    "/_not-found/page": [
       "static/chunks/webpack.js",
       "static/chunks/main-app.js",
-      "static/chunks/app/category/[id]/page.js"
-    ],
-    "/[id]/page": [
-      "static/chunks/webpack.js",
-      "static/chunks/main-app.js",
-      "static/chunks/app/[id]/page.js"
-    ],
-    "/(accounts)/account/page": [
-      "static/chunks/webpack.js",
-      "static/chunks/main-app.js",
-      "static/chunks/app/(accounts)/account/page.js"
-    ],
-    "/(accounts)/layout": [
-      "static/chunks/webpack.js",
-      "static/chunks/main-app.js",
-      "static/chunks/app/(accounts)/layout.js"
+      "static/chunks/app/_not-found/page.js"
     ],
     "/(accounts)/account-savelists/page": [
       "static/chunks/webpack.js",
       "static/chunks/main-app.js",
       "static/chunks/app/(accounts)/account-savelists/page.js"
     ],
-    "/_not-found/page": [
+    "/(accounts)/layout": [
       "static/chunks/webpack.js",
       "static/chunks/main-app.js",
-      "static/chunks/app/_not-found/page.js"
+      "static/chunks/app/(accounts)/layout.js"
     ],
-    "/(accounts)/account-order/page": [
+    "/(accounts)/account/page": [
       "static/chunks/webpack.js",
       "static/chunks/main-app.js",
-      "static/chunks/app/(accounts)/account-order/page.js"
-    ],
-    "/(accounts)/account-password/page": [
-      "static/chunks/webpack.js",
-      "static/chunks/main-app.js",
-      "static/chunks/app/(accounts)/account-password/page.js"
-    ],
-    "/(accounts)/account-billing/page": [
-      "static/chunks/webpack.js",
-      "static/chunks/main-app.js",
-      "static/chunks/app/(accounts)/account-billing/page.js"
+      "static/chunks/app/(accounts)/account/page.js"
     ]
   }
 }

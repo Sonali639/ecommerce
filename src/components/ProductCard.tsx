@@ -71,8 +71,30 @@ console.log(res,"wishlist res")
   console.error("Error adding to wishlist:", error);
 }
   };
+const [wishlistID, setWishlistID] = useState([]);
+const wishlist = async () => {
+  try {
+    const response = await httpRequest({
+      url: API.ADD_TO_WISHLIST,
+      method: "GET",
+    });
 
+    // Example: Save all wishlist IDs
+    const ids = response.data.map(item => item.id);
+    setWishlistID(ids); // assuming wishlistID is an array
 
+    console.log("wishlist IDs:", ids);
+  } catch (error) {
+    console.error("Error adding to wishlist:", error);
+  }
+};
+
+  useEffect(() => {
+  
+  wishlist();
+  }, []);
+
+  console.log(wishlistID,"wishlistID")
  
   // const notifyAddTocart = ({ size }: { size?: string }) => {
   //   toast.custom(
@@ -365,7 +387,7 @@ console.log(res,"wishlist res")
             />
           </Link>
           <ProductStatus status={`${calculateDiscount(base_price, base_discounted_price )}`} />
-          <LikeButton liked={isLiked} id={id} className="absolute top-3 end-3 z-10" />
+          <LikeButton    isLiked={wishlistID.includes(id)} id={id} className="absolute top-3 end-3 z-10" />
           {/* {sizes ? renderSizeList() : renderGroupButtons()} */}
           {renderGroupButtons()}
         </div>
