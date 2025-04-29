@@ -494,14 +494,7 @@ const AccountPage = () => {
                 />
               </div>
             </div> */}
-            <div>
-{addresses.map((address) => (
-                <div key={address.id}>
-                  <Label>{address.address}</Label>
-                </div>
-              ))}
-            </div>
-
+          
             {/* Phone Number */}
             <div>
               <Label>Phone number</Label>
@@ -516,6 +509,20 @@ const AccountPage = () => {
                 />
               </div>
             </div>
+            <div>
+            <Label>Address</Label>
+            <div className=" border mt-1.5 p-2 border-[#ff0000] border-1 rounded-xl">
+            {addresses.length > 0 && (
+  <div key={addresses[addresses.length - 1].id}>
+    <Label>{addresses[addresses.length - 1].address}</Label>
+    <p>{addresses[addresses.length - 1].postal_code}</p>
+  </div>
+)}
+
+            </div>
+            </div>
+         
+
 
             {/* Submit */}
             <div className="pt-2">

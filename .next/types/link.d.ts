@@ -32,17 +32,17 @@ declare namespace __next_route_internal_types__ {
     | `/`
     | `/account`
     | `/account-billing`
-    | `/account-savelists`
     | `/account-order`
     | `/account-password`
+    | `/account-savelists`
     | `/about`
     | `/api/hello`
     | `/blog`
     | `/blog-single`
     | `/cart`
     | `/checkout`
-    | `/collection-2`
     | `/collection`
+    | `/collection-2`
     | `/contact`
     | `/forgot-pass`
     | `/home-2`

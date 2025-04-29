@@ -2559,6 +2559,9 @@ select {
 .mt-auto {
   margin-top: auto;
 }
+.mt-\[\] {
+  margin-top: ;
+}
 .line-clamp-1 {
   overflow: hidden;
   display: -webkit-box;
@@ -3624,6 +3627,13 @@ select {
 .border-yellow-500 {
   --tw-border-opacity: 1;
   border-color: rgb(234 179 8 / var(--tw-border-opacity, 1));
+}
+.border-\[\] {
+  border-color: ;
+}
+.border-\[\#ff0000\] {
+  --tw-border-opacity: 1;
+  border-color: rgb(255 0 0 / var(--tw-border-opacity, 1));
 }
 .border-opacity-5 {
   --tw-border-opacity: 0.05;
@@ -12392,7 +12402,7 @@ readers do not read off random characters that represent icons */
   font-weight: normal;
   font-display: auto;
   src: url(/_next/static/media/la-brands-400.48e89963.eot);
-  src: url(/_next/static/media/la-brands-400.48e89963.eot?#iefix) format("embedded-opentype"), url(/_next/static/media/la-brands-400.122c4137.woff2) format("woff2"), url(/_next/static/media/la-brands-400.1ec1f0f5.woff) format("woff"), url(/_next/static/media/la-brands-400.4343d0c0.ttf) format("truetype"), url(/_next/static/media/la-brands-400.76d3b8a5.svg#lineawesome) format("svg"); }
+  src: url(/_next/static/media/la-brands-400.48e89963.eot?#iefix) format("embedded-opentype"), url(/_next/static/media/la-brands-400.122c4137.woff2) format("woff2"), url(/_next/static/media/la-brands-400.1ec1f0f5.woff) format("woff"), url(/_next/static/media/la-brands-400.4343d0c0.ttf) format("truetype"), url(/_next/static/media/la-brands-400.188c0a93.svg#lineawesome) format("svg"); }
 
 .lab {
   font-family: 'Line Awesome Brands'; }
@@ -12402,7 +12412,7 @@ readers do not read off random characters that represent icons */
   font-weight: 400;
   font-display: auto;
   src: url(/_next/static/media/la-regular-400.7b67c533.eot);
-  src: url(/_next/static/media/la-regular-400.7b67c533.eot?#iefix) format("embedded-opentype"), url(/_next/static/media/la-regular-400.bfaaab46.woff2) format("woff2"), url(/_next/static/media/la-regular-400.f45e994d.woff) format("woff"), url(/_next/static/media/la-regular-400.df0ba4ff.ttf) format("truetype"), url(/_next/static/media/la-regular-400.5e18e0c4.svg#lineawesome) format("svg"); }
+  src: url(/_next/static/media/la-regular-400.7b67c533.eot?#iefix) format("embedded-opentype"), url(/_next/static/media/la-regular-400.bfaaab46.woff2) format("woff2"), url(/_next/static/media/la-regular-400.f45e994d.woff) format("woff"), url(/_next/static/media/la-regular-400.df0ba4ff.ttf) format("truetype"), url(/_next/static/media/la-regular-400.cbbfa81c.svg#lineawesome) format("svg"); }
 
 .lar {
   font-family: 'Line Awesome Free';
@@ -12413,7 +12423,7 @@ readers do not read off random characters that represent icons */
   font-weight: 900;
   font-display: auto;
   src: url(/_next/static/media/la-solid-900.85692007.eot);
-  src: url(/_next/static/media/la-solid-900.85692007.eot?#iefix) format("embedded-opentype"), url(/_next/static/media/la-solid-900.8e5c796f.woff2) format("woff2"), url(/_next/static/media/la-solid-900.7dd81512.woff) format("woff"), url(/_next/static/media/la-solid-900.582c3a0f.ttf) format("truetype"), url(/_next/static/media/la-solid-900.56cddde2.svg#lineawesome) format("svg"); }
+  src: url(/_next/static/media/la-solid-900.85692007.eot?#iefix) format("embedded-opentype"), url(/_next/static/media/la-solid-900.8e5c796f.woff2) format("woff2"), url(/_next/static/media/la-solid-900.7dd81512.woff) format("woff"), url(/_next/static/media/la-solid-900.582c3a0f.ttf) format("truetype"), url(/_next/static/media/la-solid-900.f2ac4e58.svg#lineawesome) format("svg"); }
 
 .la,
 .las {
