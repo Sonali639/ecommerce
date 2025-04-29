@@ -2133,9 +2133,6 @@ select {
 .left-1\/2 {
   left: 50%;
 }
-.left-2 {
-  left: 0.5rem;
-}
 .left-3 {
   left: 0.75rem;
 }
@@ -6301,12 +6298,12 @@ select {
     inset: 2rem;
   }
 
-  .sm\:left-4 {
-    left: 1rem;
-  }
-
   .sm\:right-0 {
     right: 0px;
+  }
+
+  .sm\:right-4 {
+    right: 1rem;
   }
 
   .sm\:top-\[20\%\] {

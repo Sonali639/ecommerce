@@ -5,8 +5,8 @@ import ButtonClose from "@/shared/ButtonClose/ButtonClose";
 import Button from "@/shared/Button/Button";
 
 export interface NcModalProps {
-  renderContent: () => ReactNode;
-  renderTrigger?: (openModal: Function) => ReactNode;
+  renderContent: (() => ReactNode) | ((args: { closeModal: () => void }) => ReactNode);
+  renderTrigger?: (openModal: () => void) => ReactNode;
   contentExtraClass?: string;
   contentPaddingClass?: string;
   triggerText?: ReactNode;
@@ -91,7 +91,7 @@ const NcModal: FC<NcModalProps> = ({
                 <div className="py-4 px-6 text-center relative border-b border-neutral-100 dark:border-neutral-700 md:py-5">
                   <ButtonClose
                     onClick={closeModal}
-                    className="absolute left-2 top-1/2 transform -translate-y-1/2 sm:left-4"
+                    className="absolute right-2 top-1/2 transform -translate-y-1/2 sm:right-4"
                   />
                   {modalTitle && (
                     <Dialog.Title
@@ -102,7 +102,9 @@ const NcModal: FC<NcModalProps> = ({
                     </Dialog.Title>
                   )}
                 </div>
-                <div className={contentPaddingClass}>{renderContent()}</div>
+                <div className={contentPaddingClass}>{
+                  (renderContent as any).length > 0 ? (renderContent as any)({ closeModal }) : (renderContent as any)({ closeModal })
+                }</div>
               </div>
             </TransitionChild>
           </div>
