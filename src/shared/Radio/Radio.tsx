@@ -7,7 +7,7 @@ export interface RadioProps {
   onChange?: (value: string) => void;
   defaultChecked?: boolean;
   sizeClassName?: string;
-  label?: string;
+  label?: React.ReactNode;
 }
 
 const Radio: FC<RadioProps> = ({

@@ -32,26 +32,26 @@ declare namespace __next_route_internal_types__ {
     | `/`
     | `/account`
     | `/account-billing`
+    | `/account-savelists`
     | `/account-order`
     | `/account-password`
-    | `/account-savelists`
-    | `/about`
-    | `/api/hello`
     | `/blog`
-    | `/blog-single`
+    | `/about`
     | `/cart`
+    | `/api/hello`
+    | `/blog-single`
     | `/checkout`
     | `/collection`
-    | `/collection-2`
     | `/contact`
-    | `/forgot-pass`
+    | `/collection-2`
     | `/home-2`
     | `/login`
     | `/product-detail`
     | `/product-detail-2`
-    | `/search`
     | `/signup`
     | `/subscription`
+    | `/search`
+    | `/forgot-pass`
   type DynamicRoutes<T extends string = string> = 
     | `/${SafeSlug<T>}`
     | `/category/${SafeSlug<T>}`

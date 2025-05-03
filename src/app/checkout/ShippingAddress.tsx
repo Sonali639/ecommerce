@@ -9,12 +9,14 @@ import Radio from "@/shared/Radio/Radio";
 import Select from "@/shared/Select/Select";
 
 interface Props {
+  addresses: object[];
   isActive: boolean;
   onCloseActive: () => void;
   onOpenActive: () => void;
 }
 
 const ShippingAddress: FC<Props> = ({
+  addresses,
   isActive,
   onCloseActive,
   onOpenActive,
@@ -95,7 +97,7 @@ const ShippingAddress: FC<Props> = ({
             className="py-2 px-4 bg-slate-50 hover:bg-slate-100 dark:bg-slate-800 dark:hover:bg-slate-700 mt-5 sm:mt-0 sm:ml-auto text-sm font-medium rounded-lg"
             onClick={onOpenActive}
           >
-            Change
+            View/Change
           </button>
         </div>
         <div
@@ -104,7 +106,7 @@ const ShippingAddress: FC<Props> = ({
           }`}
         >
           {/* ============ */}
-          <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-3">
+          {/* <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-3">
             <div>
               <Label className="text-sm">First name</Label>
               <Input className="mt-1.5" defaultValue="Cole" />
@@ -113,10 +115,10 @@ const ShippingAddress: FC<Props> = ({
               <Label className="text-sm">Last name</Label>
               <Input className="mt-1.5" defaultValue="Enrico " />
             </div>
-          </div>
+          </div> */}
 
           {/* ============ */}
-          <div className="sm:flex space-y-4 sm:space-y-0 sm:space-x-3">
+          {/* <div className="sm:flex space-y-4 sm:space-y-0 sm:space-x-3">
             <div className="flex-1">
               <Label className="text-sm">Address</Label>
               <Input
@@ -130,10 +132,10 @@ const ShippingAddress: FC<Props> = ({
               <Label className="text-sm">Apt, Suite *</Label>
               <Input className="mt-1.5" defaultValue="55U - DD5 " />
             </div>
-          </div>
+          </div> */}
 
           {/* ============ */}
-          <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-3">
+          {/* <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-3">
             <div>
               <Label className="text-sm">City</Label>
               <Input className="mt-1.5" defaultValue="Norris" />
@@ -151,10 +153,10 @@ const ShippingAddress: FC<Props> = ({
                 <option value="United States">China</option>
               </Select>
             </div>
-          </div>
+          </div> */}
 
           {/* ============ */}
-          <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-3">
+          {/* <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-3">
             <div>
               <Label className="text-sm">State/Province</Label>
               <Input className="mt-1.5" defaultValue="Texas" />
@@ -163,9 +165,30 @@ const ShippingAddress: FC<Props> = ({
               <Label className="text-sm">Postal code</Label>
               <Input className="mt-1.5" defaultValue="2500 " />
             </div>
-          </div>
+          </div> */}
 
           {/* ============ */}
+{addresses.map((address: any) => (
+ <Radio
+ label={` <div className="flex justify-between"> 
+  
+  <div className="text-sm font-medium">${address.address}, ${address.postal_code} <br/>
+ 
+ <span className="font-light">${address.city}, ${address.state}, ${address.country}</span> <br/>
+ <span className="font-light">${address.phone}</span>
+ 
+ </div>
+ <Button>Change</Button>
+ </div>`}
+ id="Address"
+ name="address"
+ className="bg-slate-50 p-4 rounded-lg"
+ defaultChecked
+/>
+))}
+         
+
+
           <div>
             <Label className="text-sm">Address type</Label>
             <div className="mt-1.5 grid grid-cols-1 sm:grid-cols-2 gap-2 sm:gap-3">

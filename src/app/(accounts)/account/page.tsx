@@ -510,12 +510,13 @@ const AccountPage = () => {
               </div>
             </div>
             <div>
-            <Label>Address</Label>
-            <div className=" border mt-1.5 p-2 border-[#ff0000] border-1 rounded-xl">
+            <Label>Default Shipping Address</Label>
+            <div className=" rounded-l-2xl border border-r-0 border-neutral-200 dark:border-neutral-700 mt-1.5 p-3 text-neutral-500 dark:text-neutral-400  text-sm rounded-xl">
             {addresses.length > 0 && (
   <div key={addresses[addresses.length - 1].id}>
     <Label>{addresses[addresses.length - 1].address}</Label>
-    <p>{addresses[addresses.length - 1].postal_code}</p>
+    <p>{addresses[addresses.length - 1].postal_code}, {addresses[addresses.length - 1].city}, {addresses[addresses.length - 1].state}</p>
+ <p>{addresses[addresses.length - 1].phone}</p>
   </div>
 )}
 
