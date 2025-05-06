@@ -3625,6 +3625,10 @@ select {
   --tw-border-opacity: 1;
   border-color: rgb(234 179 8 / var(--tw-border-opacity, 1));
 }
+.border-gray-300 {
+  --tw-border-opacity: 1;
+  border-color: rgb(209 213 219 / var(--tw-border-opacity, 1));
+}
 .border-opacity-5 {
   --tw-border-opacity: 0.05;
 }
@@ -4204,9 +4208,6 @@ select {
 .text-right {
   text-align: right;
 }
-.text-end {
-  text-align: end;
-}
 .align-middle {
   vertical-align: middle;
 }
@@ -4517,6 +4518,10 @@ select {
   --tw-text-opacity: 1;
   color: rgb(133 77 14 / var(--tw-text-opacity, 1));
 }
+.text-red-600 {
+  --tw-text-opacity: 1;
+  color: rgb(220 38 38 / var(--tw-text-opacity, 1));
+}
 .text-opacity-20 {
   --tw-text-opacity: 0.2;
 }
@@ -4534,6 +4539,9 @@ select {
 }
 .line-through {
   text-decoration-line: line-through;
+}
+.accent-blue-600 {
+  accent-color: #2563eb;
 }
 .opacity-0 {
   opacity: 0;
@@ -5688,6 +5696,10 @@ select {
   --tw-border-opacity: 1;
   border-color: rgb(51 65 85 / var(--tw-border-opacity, 1));
 }
+.hover\:border-blue-500:hover {
+  --tw-border-opacity: 1;
+  border-color: rgb(59 130 246 / var(--tw-border-opacity, 1));
+}
 .hover\:\!bg-gray-100:hover {
   --tw-bg-opacity: 1 !important;
   background-color: rgb(243 244 246 / var(--tw-bg-opacity, 1)) !important;
@@ -5814,6 +5826,10 @@ select {
 .hover\:text-white:hover {
   --tw-text-opacity: 1;
   color: rgb(255 255 255 / var(--tw-text-opacity, 1));
+}
+.hover\:text-red-800:hover {
+  --tw-text-opacity: 1;
+  color: rgb(153 27 27 / var(--tw-text-opacity, 1));
 }
 .hover\:text-opacity-100:hover {
   --tw-text-opacity: 1;
@@ -12395,7 +12411,7 @@ readers do not read off random characters that represent icons */
   font-weight: normal;
   font-display: auto;
   src: url(/_next/static/media/la-brands-400.48e89963.eot);
-  src: url(/_next/static/media/la-brands-400.48e89963.eot?#iefix) format("embedded-opentype"), url(/_next/static/media/la-brands-400.122c4137.woff2) format("woff2"), url(/_next/static/media/la-brands-400.1ec1f0f5.woff) format("woff"), url(/_next/static/media/la-brands-400.4343d0c0.ttf) format("truetype"), url(/_next/static/media/la-brands-400.76d3b8a5.svg#lineawesome) format("svg"); }
+  src: url(/_next/static/media/la-brands-400.48e89963.eot?#iefix) format("embedded-opentype"), url(/_next/static/media/la-brands-400.122c4137.woff2) format("woff2"), url(/_next/static/media/la-brands-400.1ec1f0f5.woff) format("woff"), url(/_next/static/media/la-brands-400.4343d0c0.ttf) format("truetype"), url(/_next/static/media/la-brands-400.188c0a93.svg#lineawesome) format("svg"); }
 
 .lab {
   font-family: 'Line Awesome Brands'; }
@@ -12405,7 +12421,7 @@ readers do not read off random characters that represent icons */
   font-weight: 400;
   font-display: auto;
   src: url(/_next/static/media/la-regular-400.7b67c533.eot);
-  src: url(/_next/static/media/la-regular-400.7b67c533.eot?#iefix) format("embedded-opentype"), url(/_next/static/media/la-regular-400.bfaaab46.woff2) format("woff2"), url(/_next/static/media/la-regular-400.f45e994d.woff) format("woff"), url(/_next/static/media/la-regular-400.df0ba4ff.ttf) format("truetype"), url(/_next/static/media/la-regular-400.5e18e0c4.svg#lineawesome) format("svg"); }
+  src: url(/_next/static/media/la-regular-400.7b67c533.eot?#iefix) format("embedded-opentype"), url(/_next/static/media/la-regular-400.bfaaab46.woff2) format("woff2"), url(/_next/static/media/la-regular-400.f45e994d.woff) format("woff"), url(/_next/static/media/la-regular-400.df0ba4ff.ttf) format("truetype"), url(/_next/static/media/la-regular-400.cbbfa81c.svg#lineawesome) format("svg"); }
 
 .lar {
   font-family: 'Line Awesome Free';
@@ -12416,7 +12432,7 @@ readers do not read off random characters that represent icons */
   font-weight: 900;
   font-display: auto;
   src: url(/_next/static/media/la-solid-900.85692007.eot);
-  src: url(/_next/static/media/la-solid-900.85692007.eot?#iefix) format("embedded-opentype"), url(/_next/static/media/la-solid-900.8e5c796f.woff2) format("woff2"), url(/_next/static/media/la-solid-900.7dd81512.woff) format("woff"), url(/_next/static/media/la-solid-900.582c3a0f.ttf) format("truetype"), url(/_next/static/media/la-solid-900.56cddde2.svg#lineawesome) format("svg"); }
+  src: url(/_next/static/media/la-solid-900.85692007.eot?#iefix) format("embedded-opentype"), url(/_next/static/media/la-solid-900.8e5c796f.woff2) format("woff2"), url(/_next/static/media/la-solid-900.7dd81512.woff) format("woff"), url(/_next/static/media/la-solid-900.582c3a0f.ttf) format("truetype"), url(/_next/static/media/la-solid-900.f2ac4e58.svg#lineawesome) format("svg"); }
 
 .la,
 .las {

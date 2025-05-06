@@ -1,7 +1,10 @@
 {
+  "/page": "app/page.js",
+  "/[id]/page": "app/[id]/page.js",
+  "/category/[id]/page": "app/category/[id]/page.js",
   "/cart/page": "app/cart/page.js",
   "/checkout/page": "app/checkout/page.js",
-  "/about/page": "app/about/page.js",
-  "/[id]/page": "app/[id]/page.js",
-  "/blog/page": "app/blog/page.js"
+  "/(accounts)/account/page": "app/(accounts)/account/page.js",
+  "/(accounts)/account-password/page": "app/(accounts)/account-password/page.js",
+  "/(accounts)/account-savelists/page": "app/(accounts)/account-savelists/page.js"
 }
