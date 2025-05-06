@@ -47,11 +47,12 @@ declare namespace __next_route_internal_types__ {
     | `/forgot-pass`
     | `/home-2`
     | `/login`
-    | `/product-detail-2`
+    | `/order-confirmation`
     | `/product-detail`
+    | `/product-detail-2`
     | `/signup`
-    | `/subscription`
     | `/search`
+    | `/subscription`
   type DynamicRoutes<T extends string = string> = 
     | `/${SafeSlug<T>}`
     | `/category/${SafeSlug<T>}`
