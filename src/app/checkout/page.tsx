@@ -14,11 +14,45 @@ import Image from "next/image";
 import Link from "next/link";
 import { httpRequest } from "@/api/hello/httpRequest";
 import { API } from "@/constants/common";
+import emailjs from '@emailjs/browser';
 import { formatPriceWithSymbol, getLocalStorage } from "@/common/common";
+import toast from 'react-hot-toast'; // Import toast
+
+
 
 const CheckoutPage = () => {
+  const handlePhonePePayment = () => {
+    const upiLink = `upi://pay?pa=6395673945@ybl&pn=Ayush%20Rana&am=500&cu=INR`;
+    window.location.href = upiLink;
+  };
+  
+  const sendOrderConfirmationEmail = () => {
+    emailjs.send(
+      'service_57ilfcf',       // Replace with your EmailJS service ID
+      'template_m7cvwr7',      // Replace with your EmailJS template ID
+      {
+        // user_name: 'Ayush Rana',
+        // order_id: '690267',
+        // shipping: '49.00',
+        // tax: '12.00',
+        // total: '199.00',
+        // to_email: 'sonalisaluja9005@gmail.com',
+      },
+      'FQzdKCcgIKxc1xrf1'        // Replace with your public key from EmailJS
+    )
+    .then((result) => {
+      console.log('Email sent successfully:', result.text);
+      // alert('Order confirmation email sent!');
+      toast.success("Order confirmation email sent!");
+    })
+    .catch((error) => {
+      console.error('Error sending email:', error);
+      toast.error('Failed to send email.');
+    });
 
-
+    
+    
+  };
 
   const [tabActive, setTabActive] = useState<
     "ContactInfo" | "ShippingAddress" | "PaymentMethod"
@@ -271,7 +305,8 @@ const addAddress = async () => {
                 <span>$276.00</span>
               </div>
             </div>
-            <ButtonPrimary className="mt-8 w-full">Confirm order</ButtonPrimary>
+      <button onClick={handlePhonePePayment} className="p-2 bg-slate-400">paynow</button>
+            <ButtonPrimary className="mt-8 w-full" onClick={sendOrderConfirmationEmail}>Confirm order</ButtonPrimary>
             <div className="mt-5 text-sm text-slate-500 dark:text-slate-400 flex items-center justify-center">
               <p className="block relative pl-5">
                 <svg

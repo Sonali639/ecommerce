@@ -3636,6 +3636,10 @@ select {
 .border-opacity-5 {
   --tw-border-opacity: 0.05;
 }
+.bg-\[\#03820a\] {
+  --tw-bg-opacity: 1;
+  background-color: rgb(3 130 10 / var(--tw-bg-opacity, 1));
+}
 .bg-\[\#04868b\] {
   --tw-bg-opacity: 1;
   background-color: rgb(4 134 139 / var(--tw-bg-opacity, 1));
@@ -3876,13 +3880,9 @@ select {
   --tw-bg-opacity: 1;
   background-color: rgb(254 252 232 / var(--tw-bg-opacity, 1));
 }
-.bg-green-700 {
+.bg-slate-400 {
   --tw-bg-opacity: 1;
-  background-color: rgb(21 128 61 / var(--tw-bg-opacity, 1));
-}
-.bg-\[\#03820a\] {
-  --tw-bg-opacity: 1;
-  background-color: rgb(3 130 10 / var(--tw-bg-opacity, 1));
+  background-color: rgb(148 163 184 / var(--tw-bg-opacity, 1));
 }
 .bg-opacity-10 {
   --tw-bg-opacity: 0.1;
@@ -4028,6 +4028,10 @@ select {
   padding-top: 0.375rem;
   padding-bottom: 0.375rem;
 }
+.py-12 {
+  padding-top: 3rem;
+  padding-bottom: 3rem;
+}
 .py-14 {
   padding-top: 3.5rem;
   padding-bottom: 3.5rem;
@@ -4075,10 +4079,6 @@ select {
 .py-8 {
   padding-top: 2rem;
   padding-bottom: 2rem;
-}
-.py-12 {
-  padding-top: 3rem;
-  padding-bottom: 3rem;
 }
 .\!pb-0 {
   padding-bottom: 0px !important;

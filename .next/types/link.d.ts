@@ -50,8 +50,8 @@ declare namespace __next_route_internal_types__ {
     | `/order-confirmation`
     | `/product-detail`
     | `/product-detail-2`
-    | `/signup`
     | `/search`
+    | `/signup`
     | `/subscription`
   type DynamicRoutes<T extends string = string> = 
     | `/${SafeSlug<T>}`
