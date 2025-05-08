@@ -6,7 +6,7 @@ import { TiTick } from "react-icons/ti";
 
 const OrderConfirmation = () => {
   return (
-    <div className="bg-green-50 border border-green-200 rounded-xl py-12 scree px-6 max-w-xl mx-auto my-10 shadow-md text-center">
+    <div className="bg-green-50 border border-green-200 rounded-xl py-12 screer px-6 max-w-xl mx-auto my-10 shadow-md text-center">
    
    <div className="flex justify-center ">
     <span className="rounded-full p-2 bg-[#03820a]" >
