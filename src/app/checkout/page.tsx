@@ -3,10 +3,12 @@
 import Label from "@/components/Label/Label";
 import NcInputNumber from "@/components/NcInputNumber";
 import Prices from "@/components/Prices";
+import { NextResponse } from 'next/server';
 import { Product, PRODUCTS } from "@/data/data";
 import { useEffect, useState } from "react";
 import ButtonPrimary from "@/shared/Button/ButtonPrimary";
 import Input from "@/shared/Input/Input";
+
 import ContactInfo from "./ContactInfo";
 import PaymentMethod from "./PaymentMethod";
 import ShippingAddress from "./ShippingAddress";
@@ -17,15 +19,105 @@ import { API } from "@/constants/common";
 import emailjs from '@emailjs/browser';
 import { formatPriceWithSymbol, getLocalStorage } from "@/common/common";
 import toast from 'react-hot-toast'; // Import toast
-
-
+import Razorpay from 'razorpay';
 
 const CheckoutPage = () => {
   const handlePhonePePayment = () => {
     const upiLink = `upi://pay?pa=6395673945@ybl&pn=Ayush%20Rana&am=500&cu=INR`;
     window.location.href = upiLink;
   };
-  
+  useEffect(() => {
+    const script = document.createElement('script');
+    script.src = 'https://checkout.razorpay.com/v1/checkout.js';
+    script.async = true;
+    document.body.appendChild(script);
+    return () => {
+      document.body.removeChild(script);
+    };
+  }, []);
+// // 1. Load Razorpay Script
+// useEffect(() => {
+//   const script = document.createElement('script');
+//   script.src = 'https://checkout.razorpay.com/v1/checkout.js';
+//   script.async = true;
+//   document.body.appendChild(script);
+//   return () => {
+//     document.body.removeChild(script);
+//   };
+// }, []);
+
+// // 2. Trigger Razorpay Checkout
+// const openRazorpayCheckout = () => {
+//   const options = {
+//     key: 'ttRXQ0ZeBE4H61AK26zgTVrm', // This is safe on frontend
+//     amount: 50000, // in paise (₹500)
+//     currency: 'INR',
+//     name: 'HJ Real Estates',
+//     description: 'Booking Fee',
+//     image: '/avatar/white-logo.png',
+//     handler: function (response: any) {
+//       console.log('Payment successful:', response);
+//       alert(`Payment ID: ${response.razorpay_payment_id}`);
+//     },
+//     prefill: {
+//       name: 'Ayush Rana',
+//       email: 'sonalisaluja9005@gmail.com',
+//       contact: '6395673945',
+//     },
+//     theme: {
+//       color: '#2B3886',
+//     },
+//   };
+
+//   const rzp = new (window as any).Razorpay(options);
+//   rzp.open();
+// };
+const openRazorpayCheckout = async () => {
+  try {
+    const res = await fetch('/api/create-order/payment', {
+      method: 'POST',
+    });
+
+    if (!res.ok) {
+      throw new Error(`HTTP error! Status: ${res.status}`);
+    }
+
+    const data = await res.json();
+    console.log('Order created:', data);
+
+    const options = {
+      key: process.env.NEXT_PUBLIC_RAZORPAY_KEY_ID, // safe to expose
+      amount: data.order.amount,
+      currency: data.order.currency,
+      name: 'Ecommerce',
+      description: 'Booking Fee',
+      order_id: data.order.id,
+      image: '/avatar/white-logo.png',
+      handler: function (response: any) {
+        console.log('Payment successful:', response);
+        toast.success(`Payment successful! ID: ${response.razorpay_payment_id}`);
+      },
+      prefill: {
+        name: 'Ayush Rana',
+        email: 'sonalisaluja9005@gmail.com',
+        contact: '6395673945',
+      },
+      theme: {
+        color: '#2B3886',
+      },
+    };
+
+    const rzp = new (window as any).Razorpay(options);
+    rzp.open();
+  } catch (err) {
+    console.error('Failed to create order:', err);
+    toast.error('Payment initialization failed. Please try again.');
+  }
+};
+
+
+
+
   const sendOrderConfirmationEmail = () => {
     emailjs.send(
       'service_57ilfcf',       // Replace with your EmailJS service ID
@@ -50,8 +142,8 @@ const CheckoutPage = () => {
       toast.error('Failed to send email.');
     });
 
-    
-    
+
+
   };
 
   const [tabActive, setTabActive] = useState<
@@ -85,7 +177,7 @@ const addAddress = async () => {
 
   //get tempId from localstorage
   const tempId = getLocalStorage("tempId");
-  
+
   const buyProducts = async () => {
     try {
       console.log("cartItemswww")
@@ -112,7 +204,7 @@ const addAddress = async () => {
   const renderProduct = (item: Product, index: number) => {
     const { image, price, name } = item;
     console.log("useeffct")
-  
+
 
 
   console.log(addresses,"addressescheckout")
@@ -140,9 +232,9 @@ const addAddress = async () => {
                   <Link href="/product-detail">{name}</Link>
                 </h3>
                 <div className="mt-1.5 sm:mt-2.5 flex text-sm text-slate-600 dark:text-slate-300">
-                
+
                   <span className="mx-4 border-l border-slate-200 dark:border-slate-700 "></span>
-              
+
                 </div>
 
                 {/* <div className="mt-3 flex justify-between w-full sm:hidden relative">
@@ -159,9 +251,9 @@ const addAddress = async () => {
                     <option value="6">6</option>
                     <option value="7">7</option>
                   </select>
-             
+
                 </div> */}
-              
+
               </div>
 
               <div className="hidden flex-1 sm:flex justify-end">
@@ -170,8 +262,8 @@ const addAddress = async () => {
                   <br />
                   <span className="mt-2 ">Qty:{item.qty}</span>
                 </div>
-                
-                
+
+
               </div>
             </div>
           </div>
@@ -226,7 +318,7 @@ const addAddress = async () => {
           />
         </div>
 
-        <div id="PaymentMethod" className="scroll-mt-24">
+        {/* <div id="PaymentMethod" className="scroll-mt-24">
           <PaymentMethod
             isActive={tabActive === "PaymentMethod"}
             onOpenActive={() => {
@@ -235,7 +327,10 @@ const addAddress = async () => {
             }}
             onCloseActive={() => setTabActive("PaymentMethod")}
           />
-        </div>
+        </div> */}
+        <ButtonPrimary onClick={openRazorpayCheckout}>
+ Click here to pay
+</ButtonPrimary>
       </div>
     );
   };
@@ -305,7 +400,9 @@ const addAddress = async () => {
                 <span>$276.00</span>
               </div>
             </div>
-      <button onClick={handlePhonePePayment} className="p-2 bg-slate-400">paynow</button>
+            
+
+      {/* <button onClick={handlePhonePePayment} className="p-2 bg-slate-400">paynow</button> */}
             <ButtonPrimary className="mt-8 w-full" onClick={sendOrderConfirmationEmail}>Confirm order</ButtonPrimary>
             <div className="mt-5 text-sm text-slate-500 dark:text-slate-400 flex items-center justify-center">
               <p className="block relative pl-5">

@@ -1,10 +1,9 @@
 {
   "pages": {
-    "/page": [
+    "/checkout/page": [
       "static/chunks/webpack.js",
       "static/chunks/main-app.js",
-      "static/css/app/page.css",
-      "static/chunks/app/page.js"
+      "static/chunks/app/checkout/page.js"
     ],
     "/layout": [
       "static/chunks/webpack.js",
@@ -17,9 +16,10 @@
       "static/chunks/main-app.js",
       "static/chunks/app/not-found.js"
     ],
-    "/checkout/page": [
+    "/_not-found/page": [
       "static/chunks/webpack.js",
       "static/chunks/main-app.js",
+<<<<<<< HEAD
       "static/chunks/app/checkout/page.js"
     ],
     "/cart/page": [
@@ -36,6 +36,9 @@
       "static/chunks/webpack.js",
       "static/chunks/main-app.js",
       "static/chunks/app/(accounts)/layout.js"
+=======
+      "static/chunks/app/_not-found/page.js"
+>>>>>>> 0aee4cb90d608d06d9a1d45daf2d23cc2cb398fb
     ]
   }
 }

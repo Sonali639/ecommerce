@@ -479,7 +479,7 @@ error.log(err)
           </div>
 
           {/* ============ */}
-          <div className="flex flex-col sm:flex-row pt-6">
+          {/* <div className="flex flex-col sm:flex-row pt-6">
             <ButtonPrimary
               className="sm:!px-7 shadow-none"
               onClick={onCloseActive}
@@ -492,7 +492,7 @@ error.log(err)
             >
               Cancel
             </ButtonSecondary>
-          </div>
+          </div> */}
         </div>
       </div>
     );
