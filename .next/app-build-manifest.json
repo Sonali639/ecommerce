@@ -26,6 +26,16 @@
       "static/chunks/webpack.js",
       "static/chunks/main-app.js",
       "static/chunks/app/cart/page.js"
+    ],
+    "/(accounts)/account-savelists/page": [
+      "static/chunks/webpack.js",
+      "static/chunks/main-app.js",
+      "static/chunks/app/(accounts)/account-savelists/page.js"
+    ],
+    "/(accounts)/layout": [
+      "static/chunks/webpack.js",
+      "static/chunks/main-app.js",
+      "static/chunks/app/(accounts)/layout.js"
     ]
   }
 }
