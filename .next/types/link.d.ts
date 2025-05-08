@@ -30,27 +30,29 @@ declare namespace __next_route_internal_types__ {
 
   type StaticRoutes = 
     | `/`
-    | `/account-billing`
     | `/account`
+    | `/account-billing`
+    | `/account-order`
     | `/account-savelists`
     | `/account-password`
-    | `/account-order`
     | `/about`
-    | `/blog`
+    | `/api/create-order/payment`
     | `/api/hello`
+    | `/blog`
     | `/blog-single`
     | `/cart`
-    | `/checkout`
     | `/collection`
     | `/collection-2`
     | `/contact`
+    | `/checkout`
     | `/forgot-pass`
     | `/home-2`
     | `/login`
-    | `/product-detail`
+    | `/order-confirmation`
     | `/product-detail-2`
     | `/search`
     | `/signup`
+    | `/product-detail`
     | `/subscription`
   type DynamicRoutes<T extends string = string> = 
     | `/${SafeSlug<T>}`
