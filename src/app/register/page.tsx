@@ -10,8 +10,6 @@ import Input from "@/shared/Input/Input";
 import ButtonPrimary from "@/shared/Button/ButtonPrimary";
 import Image from "next/image";
 import Link from "next/link";
-import { httpRequest } from "@/api/hello/httpRequest";
-import { API } from "@/constants/common";
 
 const loginSocials = [
   {
@@ -36,35 +34,43 @@ const PageLogin = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
-   const login = async () => {
-      try {
-        const response = await httpRequest({
-          url: API.LOGIN,
-          method: "POST",
-          params: {
-            email,
-            password,
-            form_type: "customer",
-          },
-          skipAuth: true,
-        });
-        console.log("Password updated successfully", response);
-        // Optionally show a success toast or reset inputs
-      } catch (error) {
-        console.error("Error updating password:", error);
-        // Optionally show an error message
-      }
-    };
+  console.log(email,"email");
+  console.log(password,"password");
 
   return (
     <div className={`nc-PageLogin`} data-nc-id="PageLogin">
       <div className="container mb-24 lg:mb-32">
         <h2 className="my-20 flex items-center text-3xl leading-[115%] md:text-5xl md:leading-[115%] font-semibold text-neutral-900 dark:text-neutral-100 justify-center">
-          Login
+          Register
         </h2>
         <div className="max-w-md mx-auto space-y-6">
-         
+        
           <form className="grid grid-cols-1 gap-6" action="#" method="post">
+           <label className="block">
+              <span className="text-neutral-800 dark:text-neutral-200">
+               Full Name
+              </span>
+              <Input
+                type="email"
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
+                placeholder="alex smith"
+                className="mt-1"
+              />
+            </label>
+            <label className="block">
+              <span className="text-neutral-800 dark:text-neutral-200">
+                Phone
+              </span>
+              <Input
+                type="email"
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
+                placeholder="+91 987654321"
+                className="mt-1"
+              />
+            </label>
+           
             <label className="block">
               <span className="text-neutral-800 dark:text-neutral-200">
                 Email address
@@ -78,23 +84,29 @@ const PageLogin = () => {
               />
             </label>
             <label className="block">
-              <span className="flex justify-between items-center text-neutral-800 dark:text-neutral-200">
+              <span  className="flex justify-between items-center text-neutral-800 dark:text-neutral-200">
                 Password
-                <Link href="/forgot-pass" className="text-sm text-green-600">
-                  Forgot password?
-                </Link>
+             
               </span>
-              <Input type="password" value={password} onChange={(e) => setPassword(e.target.value)}
+              <Input type="password" placeholder="******" value={password} onChange={(e) => setPassword(e.target.value)}
                 className="mt-1" />
             </label>
-            <ButtonPrimary type="submit" onClick={login} >Continue</ButtonPrimary>
+               <label className="block">
+              <span className="flex justify-between items-center text-neutral-800 dark:text-neutral-200">
+                Confirm Password
+              
+              </span>
+              <Input type="password" placeholder="******"  value={password} onChange={(e) => setPassword(e.target.value)}
+                className="mt-1" />
+            </label>
+            <ButtonPrimary type="submit">Continue</ButtonPrimary>
           </form>
 
           {/* ==== */}
           <span className="block text-center text-neutral-700 dark:text-neutral-300">
-            New user? {` `}
-            <Link className="text-green-600" href="/register">
-              Create an account
+          Already have an account? {` `}
+            <Link className="text-green-600" href="/login">
+             Login
             </Link>
           </span>
         </div>

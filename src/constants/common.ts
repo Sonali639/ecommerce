@@ -58,7 +58,12 @@ ADD_TO_WISHLIST: "user/wishlists",
 
     USER_ADDRESSES:"user/addresses",
 
-    UPDATE_ADDRESS:"address/update"
+    UPDATE_ADDRESS:"address/update",
+
+    LOGIN: "auth/login",
+    REGISTER: "auth/register",
+
+
 
 });
 

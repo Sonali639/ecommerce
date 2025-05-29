@@ -1,9 +1,44 @@
-import React from "react";
+"use client";
+
+import React, { useState } from "react";
 import Input from "@/shared/Input/Input";
 import ButtonPrimary from "@/shared/Button/ButtonPrimary";
 import Link from "next/link";
+import { httpRequest } from "@/api/hello/httpRequest";
+import { API } from "@/constants/common";
 
 const PageForgotPass = ({}) => {
+
+  const [email, setEmail] = useState("");
+
+
+  //call api
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+
+    // Validate form data
+    if (!email) {
+      alert("Please fill in all fields");
+      return;
+    }
+    try {
+      const response = await httpRequest({
+        url: API.FORGOT_PASSWORD,
+        method: "POST",
+        params: {
+          email,
+          form_type: "customer",
+        },
+      });
+      console.log(response);
+      
+    } catch (error) {
+      console.log(error);
+    }
+   
+
+  };
+
   return (
     <div className="container mb-24 lg:mb-32">
       <header className="text-center max-w-2xl mx-auto - mb-14 sm:mb-16 lg:mb-20">
@@ -26,6 +61,8 @@ const PageForgotPass = ({}) => {
               type="email"
               placeholder="example@example.com"
               className="mt-1"
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}   
             />
           </label>
           <ButtonPrimary type="submit">Continue</ButtonPrimary>
@@ -38,7 +75,7 @@ const PageForgotPass = ({}) => {
             Sign in
           </Link>
           {` / `}
-          <Link href="/signup" className="text-green-600">
+          <Link href="/register" className="text-green-600">
             Sign up
           </Link>
         </span>

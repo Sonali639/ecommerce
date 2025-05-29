@@ -23,6 +23,12 @@ useEffect(() => {
   setUser(user);
 }, []);
 
+const handleLogout = () => {
+  close(); // Modal ya popup band karo
+  // localStorage.removeItem('token'); // Token hatao
+  window.location.href = "/login";
+};
+
   return (
     <div className="AvatarDropdown ">
       <Popover className="relative">
@@ -298,10 +304,10 @@ useEffect(() => {
                     </Link>
 
                     {/* ------------------ 2 --------------------- */}
-                    <Link
-                      href={"/#"}
-                      className="flex items-center p-2 -m-3 transition duration-150 ease-in-out rounded-lg hover:bg-neutral-100 dark:hover:bg-neutral-700 focus:outline-none focus-visible:ring focus-visible:ring-orange-500 focus-visible:ring-opacity-50"
-                      onClick={() => close()}
+                    <div
+                      // href={"/#"}
+                      className="flex hover:cursor-pointer items-center p-2 -m-3 transition duration-150 ease-in-out rounded-lg hover:bg-neutral-100 dark:hover:bg-neutral-700 focus:outline-none focus-visible:ring focus-visible:ring-orange-500 focus-visible:ring-opacity-50"
+                      onClick={handleLogout}
                     >
                       <div className="flex items-center justify-center flex-shrink-0 text-neutral-500 dark:text-neutral-300">
                         <svg
@@ -337,7 +343,7 @@ useEffect(() => {
                       <div className="ml-4">
                         <p className="text-sm font-medium ">{"Log out"}</p>
                       </div>
-                    </Link>
+                    </div>
                   </div>
                 </div>
               </PopoverPanel>

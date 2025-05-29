@@ -23,7 +23,7 @@ import Razorpay from 'razorpay';
 
 const CheckoutPage = () => {
   const handlePhonePePayment = () => {
-    const upiLink = `upi://pay?pa=6395673945@ybl&pn=Ayush%20Rana&am=500&cu=INR`;
+    const upiLink = `upi://pay?pa=6395673945@ybl&pn=Ayush%20Rana&am=1000&cu=INR`;
     window.location.href = upiLink;
   };
   useEffect(() => {
@@ -87,12 +87,15 @@ const openRazorpayCheckout = async () => {
 
     const options = {
       key: process.env.NEXT_PUBLIC_RAZORPAY_KEY_ID, // safe to expose
-      amount: data.order.amount,
-      currency: data.order.currency,
-      name: 'Ecommerce',
+      "amount": parseFloat("1.5")*100,
+      "currency": data.order.currency,
+      "name": 'Ecommerce1',
       description: 'Booking Fee',
       order_id: data.order.id,
       image: '/avatar/white-logo.png',
+      method: {
+        upi: true
+      },
       handler: function (response: any) {
         console.log('Payment successful:', response);
         toast.success(`Payment successful! ID: ${response.razorpay_payment_id}`);
@@ -100,7 +103,7 @@ const openRazorpayCheckout = async () => {
       prefill: {
         name: 'Ayush Rana',
         email: 'sonalisaluja9005@gmail.com',
-        contact: '6395673945',
+        // contact: '6395673945',
       },
       theme: {
         color: '#2B3886',
