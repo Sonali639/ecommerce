@@ -21,8 +21,10 @@ export default function CartDropdown() {
   const [isOpen, setIsOpen] = useState(false);
   const [loading, setLoading] = useState(true);
 console.log(addedToCart,'.!!!')
+
   //fetchh tempId from local store
   const tempId = getLocalStorage("tempId");
+  const token = getLocalStorage("token");
   const fetchCartData = async () => {
     try {
       const response = await httpRequest({
@@ -328,19 +330,20 @@ console.log(addedToCart,'.!!!')
                       </p>
                       <div className="flex space-x-2 mt-5">
                         <ButtonSecondary
-                          href="/cart"
+                          href={token ? "/cart" : "/login"}
                           className="flex-1 border border-slate-200 dark:border-slate-700"
                           onClick={close}
                         >
                           View cart
                         </ButtonSecondary>
-                        <ButtonPrimary
-                          href="/checkout"
-                          onClick={close}
-                          className="flex-1"
-                        >
-                          Check out
-                        </ButtonPrimary>
+                       <ButtonPrimary
+  href={token ? "/checkout" : "/login"}
+  onClick={close}
+  className="flex-1"
+>
+  Check out
+</ButtonPrimary>
+
                       </div>
                     </div>
                   </div>

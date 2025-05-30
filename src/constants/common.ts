@@ -6,6 +6,12 @@ export const API = Object.freeze({
 
     VERSION: "api/v1/",
 
+    LOGIN: "auth/login",
+
+    REGISTER: "/auth/signup",
+
+    FORGOT_PASSWORD: "auth/password/create",
+
     HEADER: "setting/header",
 
     BRANDS: "all-brands",
@@ -58,12 +64,7 @@ ADD_TO_WISHLIST: "user/wishlists",
 
     USER_ADDRESSES:"user/addresses",
 
-    UPDATE_ADDRESS:"address/update",
-
-    LOGIN: "auth/login",
-    REGISTER: "auth/register",
-
-
+    UPDATE_ADDRESS:"address/update"
 
 });
 

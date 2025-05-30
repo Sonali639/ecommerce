@@ -18,16 +18,22 @@ export default function AvatarDropdown() {
 
 const [user, setUser] = useState({});
 
+const handleLogout = () => {
+  
+  localStorage.removeItem("token");
+  localStorage.removeItem("user");
+  //redirect to login page
+  window.location.replace("/login");
+};
+const handleLogin = () => {
+  window.location.replace("/login");
+};
+//get token from local storage
+const token = getLocalStorage("token");
 useEffect(() => {
   const user = getLocalStorage("user");
   setUser(user);
 }, []);
-
-const handleLogout = () => {
-  close(); // Modal ya popup band karo
-  // localStorage.removeItem('token'); // Token hatao
-  window.location.href = "/login";
-};
 
   return (
     <div className="AvatarDropdown ">
@@ -85,7 +91,7 @@ const handleLogout = () => {
 
                     {/* ------------------ 1 --------------------- */}
                     <Link
-                      href={"/account"}
+                      href={token ? "/account" : "/login"}
                       className="flex items-center p-2 -m-3 transition duration-150 ease-in-out rounded-lg hover:bg-neutral-100 dark:hover:bg-neutral-700 focus:outline-none focus-visible:ring focus-visible:ring-orange-500 focus-visible:ring-opacity-50"
                       onClick={() => close()}
                     >
@@ -113,14 +119,14 @@ const handleLogout = () => {
                           />
                         </svg>
                       </div>
-                      <div className="ml-4">
-                        <p className="text-sm font-medium ">{"My Account"}</p>
+                      <div className="ml-4" >
+                        <p className="text-sm font-medium " >{"My Account"}</p>
                       </div>
                     </Link>
 
                     {/* ------------------ 2 --------------------- */}
                     <Link
-                      href={"/checkout"}
+                      href={token? "/checkout" : "/login"}  
                       className="flex items-center p-2 -m-3 transition duration-150 ease-in-out rounded-lg hover:bg-neutral-100 dark:hover:bg-neutral-700 focus:outline-none focus-visible:ring focus-visible:ring-orange-500 focus-visible:ring-opacity-50"
                       onClick={() => close()}
                     >
@@ -304,13 +310,13 @@ const handleLogout = () => {
                     </Link>
 
                     {/* ------------------ 2 --------------------- */}
-                    <div
-                      // href={"/#"}
-                      className="flex hover:cursor-pointer items-center p-2 -m-3 transition duration-150 ease-in-out rounded-lg hover:bg-neutral-100 dark:hover:bg-neutral-700 focus:outline-none focus-visible:ring focus-visible:ring-orange-500 focus-visible:ring-opacity-50"
-                      onClick={handleLogout}
+                    {token?
+                    <div         
+                      className="flex items-center p-2 -m-3 transition duration-150 ease-in-out rounded-lg hover:bg-neutral-100 dark:hover:bg-neutral-700 focus:outline-none focus-visible:ring focus-visible:ring-orange-500 focus-visible:ring-opacity-50"
+                      onClick={() => close()}
                     >
                       <div className="flex items-center justify-center flex-shrink-0 text-neutral-500 dark:text-neutral-300">
-                        <svg
+                   <svg
                           width="24"
                           height="24"
                           viewBox="0 0 24 24"
@@ -339,11 +345,59 @@ const handleLogout = () => {
                             strokeLinejoin="round"
                           />
                         </svg>
+
                       </div>
-                      <div className="ml-4">
-                        <p className="text-sm font-medium ">{"Log out"}</p>
+                      <div className="ml-4" >
+                      
+                        <p className="text-sm font-medium " onClick={handleLogout}>{"Log out"}</p>
+      
                       </div>
-                    </div>
+                    </div>:
+                      <Link
+                      href={"/login"}
+                      className="flex items-center p-2 -m-3 transition duration-150 ease-in-out rounded-lg hover:bg-neutral-100 dark:hover:bg-neutral-700 focus:outline-none focus-visible:ring focus-visible:ring-orange-500 focus-visible:ring-opacity-50"
+                      onClick={() => close()}
+                    >
+                      <div className="flex items-center justify-center flex-shrink-0 text-neutral-500 dark:text-neutral-300">
+                       <svg
+  width="24"
+  height="24"
+  viewBox="0 0 24 24"
+  fill="none"
+  xmlns="http://www.w3.org/2000/svg"
+>
+  <path
+    d="M15.1 7.56C14.79 3.96 12.94 2.49 8.89 2.49H8.76C4.29 2.49 2.5 4.28 2.5 8.75V15.27C2.5 19.74 4.29 21.53 8.76 21.53H8.89C12.91 21.53 14.76 20.08 15.09 16.54"
+    stroke="currentColor"
+    strokeWidth="1.5"
+    strokeLinecap="round"
+    strokeLinejoin="round"
+  />
+  <path
+    d="M9 12H20.38"
+    stroke="currentColor"
+    strokeWidth="1.5"
+    strokeLinecap="round"
+    strokeLinejoin="round"
+  />
+  <path
+    d="M18.15 8.65L21.5 12L18.15 15.35"
+    stroke="currentColor"
+    strokeWidth="1.5"
+    strokeLinecap="round"
+    strokeLinejoin="round"
+  />
+</svg>
+
+                      </div>
+                      <div className="ml-4" >
+                        
+                        <p className="text-sm font-medium " >{"Log In"}</p>
+                      
+
+                      </div>
+                    </Link>
+                    }
                   </div>
                 </div>
               </PopoverPanel>
