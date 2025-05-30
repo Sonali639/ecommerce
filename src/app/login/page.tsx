@@ -46,7 +46,7 @@ const PageLogin = () => {
       });
       console.log("Login successful", response);
       // Set the user in local storage
-      storeLocalStorage("token", response.access_token);
+      // storeLocalStorage("token", response.access_token);
       console.log("token", response.access_token);
       storeLocalStorage("user", response.user);
  window.location.replace("/");

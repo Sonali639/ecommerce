@@ -206,7 +206,7 @@ console.log(productSectionTwo,'productSectionTwo')
         <div className="col-span-2 pt-1 h-full">
           <SectionHero2 SliderData={sliderOne} className="h-full" />
         </div>
-        <div className="grid grid-rows-2 gap-4 h-full">
+        <div className="sm:grid hidden grid-rows-2 gap-4 h-full">
           <SectionHero2 SliderData={sliderTwo} className="h-full" />
           <SectionHero2 SliderData={sliderThree} className="h-full" />
         </div>
